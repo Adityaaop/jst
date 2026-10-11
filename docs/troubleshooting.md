@@ -24,6 +24,10 @@ Move `fetch`, storage, cookies, workers, sockets, analytics, and vendor SDK acce
 
 Use `npm run create:slice -- --dry-run` first. The generator prints files and dependency changes, installs only selected adapters, and rolls back source and lockfiles if installation fails.
 
+## An ad-hoc Reatom Node script does not exit
+
+Test Reatom stores through Vitest (`npm run test:unit`) instead of a standalone `node` probe. Reatom's scheduler can keep the Node event loop active after a probe has printed its result; this does not indicate that the store or application is stuck.
+
 ## SSR differs from hydration
 
 Keep request-scoped state in the app container and avoid reading browser globals during server render. Cover the observable state with a Playwright SSR/hydration test rather than hiding the warning.

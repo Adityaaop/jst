@@ -25,8 +25,9 @@ it('creates complete slices without empty scaffolding', async () => {
 		expect(stdout).toContain('quality gate red until the new slice is reachable')
 		expect(await readFile(resolve(root, 'src/features/readingList/readingList.public.ts'), 'utf8'))
 			.toContain('ReadingListEntry')
-		expect(await readFile(resolve(root, 'src/features/readingList/readingList.entry.tsx'), 'utf8'))
-			.toContain('reatomComponent')
+		const entry = await readFile(resolve(root, 'src/features/readingList/readingList.entry.tsx'), 'utf8')
+		expect(entry).toContain('reatomComponent')
+		expect(entry).toContain('useWrap(store.increment)')
 		expect(await readFile(resolve(root, 'src/features/readingList/readingList.store.ts'), 'utf8'))
 			.toContain('class ReadingListStore')
 		await execute(process.execPath, [script, 'module', 'projectManagement', '--stateful', '--tests', '--no-install'], { cwd: root })
@@ -67,10 +68,10 @@ export const HTTP_CLIENT_TOKEN = new InjectionToken<HttpClient>('HTTP_CLIENT')
 declare module '@reatom/core' {
 	export function action<T extends (...args: never[]) => unknown>(callback: T, name?: string): T
 	export function atom<T>(value: T, name?: string): { (): T; set(value: T): void }
-	export function wrap<T extends (...args: never[]) => unknown>(callback: T): T
 }
 declare module '@reatom/react' {
 	export function reatomComponent<T>(component: T, name?: string): T
+	export function useWrap<T extends (...args: never[]) => unknown>(callback: T): T
 }
 `)
 	await writeFile(resolve(root, 'tsconfig.json'), `${JSON.stringify({
