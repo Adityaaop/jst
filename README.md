@@ -93,3 +93,7 @@ New to JST? Build the [first production feature](docs/getting-started.md), then 
 - [MIT License](LICENSE)
 
 Questions and proposals belong in [JST Discussions](https://github.com/jst-stack/jst/discussions). Maintained by [@antonbelous0v](https://github.com/antonbelous0v) and sustained through [GitHub Sponsors](https://github.com/sponsors/antonbelous0v).
+
+## Contributors
+
+Thanks to [everyone who improves JST](https://github.com/jst-stack/jst/graphs/contributors) through code, documentation, testing, and issue reports.
