@@ -208,7 +208,7 @@ function createFeatureEntry(typeName, name, uiDirectory, stateful) {
 	if (!stateful) {
 		return `import { ${typeName}View } from './${uiDirectory}/${name}.component'\n\nexport function ${typeName}Entry() {\n\treturn <${typeName}View />\n}\n`
 	}
-	return `import { wrap } from '@reatom/core'\nimport { reatomComponent } from '@reatom/react'\nimport { ${typeName}Store } from './${name}.store'\nimport { ${typeName}View } from './${uiDirectory}/${name}.component'\n\nconst store = new ${typeName}Store()\n\nfunction ${typeName}EntryViewModel() {\n\treturn <${typeName}View count={store.count()} onIncrement={wrap(store.increment)} />\n}\n\nexport const ${typeName}Entry = reatomComponent(${typeName}EntryViewModel, '${typeName}Entry')\n`
+	return `import { reatomComponent, useWrap } from '@reatom/react'\nimport { ${typeName}Store } from './${name}.store'\nimport { ${typeName}View } from './${uiDirectory}/${name}.component'\n\nconst store = new ${typeName}Store()\n\nfunction ${typeName}EntryViewModel() {\n\tconst onIncrement = useWrap(store.increment)\n\treturn <${typeName}View count={store.count()} onIncrement={onIncrement} />\n}\n\nexport const ${typeName}Entry = reatomComponent(${typeName}EntryViewModel, '${typeName}Entry')\n`
 }
 
 function createStore(typeName, name) {
