@@ -1,0 +1,80 @@
+name: Bug report
+description: Report reproducible incorrect behavior in JST.
+title: 'bug: '
+labels:
+  - bug
+  - needs reproduction
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a problem. Please provide a minimal reproduction and remove secrets or private source code before submitting it.
+  - type: input
+    id: versions
+    attributes:
+      label: Versions
+      description: Include JST template, create-jst, @jst-stack/eslint-plugin, Node.js, and package-manager versions where applicable.
+      placeholder: 'JST v0.4.18, create-jst 0.4.19, plugin 0.4.4, Node 24.15.0, npm 11.6.2'
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Affected area
+      options:
+        - Project creation or reset
+        - Architecture diagnostics
+        - Generator
+        - SSR or runtime
+        - Unit or browser testing
+        - Docker or deployment
+        - Documentation
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the observed behavior and its user impact.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Provide exact commands, the smallest relevant code, and a repository link when possible.
+      render: shell
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+      description: State the observable result you expected.
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics
+      description: Paste the relevant error, diagnostic code, stack trace, or failing check. Remove credentials and private data.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Operating system, filesystem, CI environment, or anything else needed to reproduce the problem.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched existing issues and pull requests for this problem.
+          required: true
+        - label: The reproduction contains no secrets or private project code.
+          required: true
+        - label: I can help validate a fix against the reproduction.
+          required: false

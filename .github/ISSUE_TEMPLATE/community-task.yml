@@ -1,0 +1,83 @@
+name: Scoped community task
+description: Define implementation-ready work for an external contributor.
+title: ''
+labels:
+  - help wanted
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this form when the problem and boundaries are already understood. A contributor should be able to implement the task without guessing the product decision.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Explain the existing failure, gap, or maintenance cost and why it matters.
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: Name the behavior and repositories or subsystems that may change.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Every item must be independently verifiable.
+      placeholder: |
+        - [ ] The failing case is reproduced by a test.
+        - [ ] The public behavior is fixed without weakening architecture checks.
+        - [ ] npm run check passes.
+    validations:
+      required: true
+  - type: textarea
+    id: constraints
+    attributes:
+      label: Design constraints
+      description: Record dependency direction, compatibility, security, or testing constraints the implementation must preserve.
+    validations:
+      required: true
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation commands
+      description: List the commands that must pass before review.
+      render: shell
+      value: |-
+        npm ci
+        npm run check
+        npx playwright install chromium
+        npm run test:e2e
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: Explicitly exclude unrelated refactors and adjacent product decisions.
+    validations:
+      required: true
+  - type: dropdown
+    id: difficulty
+    attributes:
+      label: Expected difficulty
+      options:
+        - Good first issue
+        - Intermediate
+        - Advanced
+    validations:
+      required: true
+  - type: checkboxes
+    id: owner_checks
+    attributes:
+      label: Maintainer checklist
+      options:
+        - label: The task does not duplicate an existing issue or pull request.
+          required: true
+        - label: Product and architecture decisions needed for implementation are already made.
+          required: true
+        - label: The acceptance criteria can be verified without private maintainer knowledge.
+          required: true

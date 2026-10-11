@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Architecture proposal or open-ended idea
+    url: https://github.com/jst-stack/jst/discussions/new?category=ideas
+    about: Discuss architecture changes and incomplete proposals before turning them into scoped work.
+  - name: Usage question
+    url: https://github.com/jst-stack/jst/discussions/new?category=q-a
+    about: Ask for help with setup, diagnostics, or architecture decisions.
+  - name: Security vulnerability
+    url: https://github.com/jst-stack/jst/security/policy
+    about: Report vulnerabilities privately through the security policy instead of a public issue.

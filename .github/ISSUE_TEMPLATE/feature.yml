@@ -1,0 +1,74 @@
+name: Feature proposal
+description: Propose a concrete capability with a defined user outcome.
+title: 'feat: '
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        JST adds constraints only when they solve a demonstrated product or maintenance problem. Open-ended architecture changes belong in Discussions first.
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: Describe the repeated user or maintainer problem. Do not start with the proposed implementation.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Evidence and current workaround
+      description: Show where the problem occurs and explain how users handle it today.
+    validations:
+      required: true
+  - type: textarea
+    id: outcome
+    attributes:
+      label: Required outcome
+      description: State the observable capability needed without prescribing unnecessary internals.
+    validations:
+      required: true
+  - type: textarea
+    id: boundaries
+    attributes:
+      label: Scope and boundaries
+      description: Identify affected packages, public contracts, compatibility constraints, and what must remain unchanged.
+    validations:
+      required: true
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria
+      description: Provide independently verifiable completion criteria, one per line.
+      placeholder: |
+        - [ ] Existing projects remain compatible.
+        - [ ] The new behavior has a black-box test.
+        - [ ] npm run check passes.
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Explain why documentation, existing configuration, or a smaller change does not solve the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: out_of_scope
+    attributes:
+      label: Out of scope
+      description: List adjacent changes that should not be included.
+    validations:
+      required: true
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Submission checks
+      options:
+        - label: I searched existing issues, pull requests, roadmap items, and Discussions.
+          required: true
+        - label: This proposal does not add architecture complexity solely for hypothetical future use.
+          required: true
+        - label: I am willing to help refine or validate the proposal.
+          required: false
